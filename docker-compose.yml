@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  database_cartanoel:
+    image: postgres
+    container_name: database_cartanoel
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=cartanoel
+      - POSTGRES_DB=cartanoel
+    volumes:
+      - pgdata:/data/
+  app:
+    build: .
+    container_name: cartanoel
+    ports:
+      - 3333:3333
+      - 9229:9229
+    volumes:
+      - .:/usr/app
+    links:
+      - database_cartanoel
+    depends_on:
+      - database_cartanoel
+
+
+
+volumes:
+  pgdata:
+    driver: local

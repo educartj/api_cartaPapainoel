@@ -21,9 +21,9 @@ class Letter {
   @Column()
   description: string;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
+  // @ManyToOne(() => User)
+  // @JoinColumn({ name: 'user_id' })
+  // user: User;
 
   @CreateDateColumn()
   created_at: Date;
